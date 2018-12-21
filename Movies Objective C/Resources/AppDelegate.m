@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "GMHMovieController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [GMHMovieController fetchMovies:@"star wars" withCompletion:^(NSArray<Movies *> * _Nullable movies) {
+        
+        
+        
+    }];
+    
     return YES;
 }
 
