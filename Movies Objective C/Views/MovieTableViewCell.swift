@@ -8,27 +8,25 @@
 
 import UIKit
 
-import QuartzCore
 class MovieTableViewCell: UITableViewCell {
     
     
-    
-    
-    var movies : Movies?{
-        didSet {
-            updateViews()
-        }
-    }
-    
     @IBOutlet weak var movieImage: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
     
-   
-
+    var movies : Movies?{
+        
+        didSet {
+            
+            updateViews()
+        }
+    }
+    
+    
+    
     func updateViews(){
         
         guard let movie = movies else {return}
@@ -36,15 +34,13 @@ class MovieTableViewCell: UITableViewCell {
         GMHMovieController.fetchMovieImages(movie) { (image) in
             
             DispatchQueue.main.async {
+                
                 self.titleLabel.text = movie.title
                 self.ratingLabel.text = "\(movie.rating)"
                 self.overviewLabel.text = movie.overview
                 self.movieImage.image = image
-                
             }
         }
-            
-        
-        }
     }
+}
 

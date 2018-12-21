@@ -17,14 +17,11 @@ class MovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.layer.cornerRadius=5;
         DispatchQueue.main.async {
             self.tableView.reloadData()
             
         }
         
-        
-        self.definesPresentationContext = true
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -34,7 +31,6 @@ class MovieTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return movies.count
     }
     
@@ -47,24 +43,23 @@ class MovieTableViewController: UITableViewController {
         let movie = movies[indexPath.row]
         
         cell.movies = movie
-        // Configure the cell...
         
         return cell
     }
-    
 }
 
 
+// MARK: - Search Bar
 extension MovieTableViewController: UISearchBarDelegate {
+    
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         let searchTerm = searchBar.text ?? ""
-        self.definesPresentationContext = true
+        
         
         GMHMovieController.fetchMovies(searchTerm) { (movies) in
-            
             
             guard let searchedMovies = movies else {return}
             

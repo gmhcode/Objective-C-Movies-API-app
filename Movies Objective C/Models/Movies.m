@@ -13,24 +13,19 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
+    
+    
     if (self) {
     
-        
-        
-        
+        NSString *movieImage = dictionary[@"poster_path"];
         NSString *title = dictionary[@"title"];
         NSString *overview = dictionary[@"overview"];
         NSNumber *vote_average = dictionary[@"vote_average"];
         
         
-        
-        NSString *movieImage = dictionary[@"poster_path"];
-        
-        
-        
+        //Guards against an empty image URL
         if (movieImage == (id)[NSNull null] || movieImage.length == 0 ) movieImage = @" ";
 
-        
         
         if (![title isKindOfClass:[NSString class]]
             || ! [overview isKindOfClass:[NSString class]]
@@ -40,7 +35,6 @@
             return nil;
         }
         
-       
         _title = title;
         _overview = overview;
         _rating = vote_average;
@@ -49,6 +43,4 @@
     }
     return self;
 }
-
-
 @end

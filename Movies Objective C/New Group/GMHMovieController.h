@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(void) fetchMovies:(NSString *)movies
                             withCompletion:(void (^) (NSArray<Movies *> * _Nullable movies)) completion;
 
+
 +(void) fetchMovieImages: (Movies *) movie
           withCompletion: (void (^) (UIImage * _Nullable)) completion;
 
